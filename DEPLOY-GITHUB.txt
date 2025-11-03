@@ -1,0 +1,101 @@
+═══════════════════════════════════════════════════════════════
+   🚀 DEPLOY FormQRApp TO GITHUB PAGES
+═══════════════════════════════════════════════════════════════
+
+OPTION 1: WEB INTERFACE (EASIER)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Create Repository
+   1. Go to: https://github.com
+   2. Click: + → New repository
+   3. Name: FormQRApp
+   4. Public
+   5. Create repository
+
+Step 2: Upload Files
+   1. Click: "uploading an existing file"
+   2. Upload these files:
+      ✅ index.html
+      ✅ form.html
+      ✅ style.css
+      ✅ script.js
+      ✅ form-script.js
+      ✅ manifest.json
+      ✅ service-worker.js
+      ✅ penta logo.png
+   3. Don't upload: google-apps-script.js
+   4. Commit message: "Initial commit"
+   5. Click: Commit changes
+
+Step 3: Enable GitHub Pages
+   1. Go to: Settings (top menu)
+   2. Scroll to: Pages (left sidebar)
+   3. Source: Deploy from branch
+   4. Branch: main
+   5. Folder: / (root)
+   6. Click: Save
+   7. Wait 2-3 minutes
+
+Step 4: Your Live URL
+   Your app will be at:
+   https://YOUR-USERNAME.github.io/FormQRApp/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPTION 2: GIT COMMAND LINE (ADVANCED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run these commands in Terminal:
+
+cd "/Users/divyapriya/Desktop/QR Code"
+
+git init
+
+git add index.html form.html style.css script.js form-script.js manifest.json service-worker.js "penta logo.png"
+
+git commit -m "Initial commit: FormQRApp PWA"
+
+git branch -M main
+
+git remote add origin https://github.com/YOUR-USERNAME/FormQRApp.git
+
+git push -u origin main
+
+Then enable GitHub Pages in repository Settings.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AFTER DEPLOYMENT: UPDATE QR CODE URL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Once deployed, update script.js line 9:
+
+OLD:
+formUrl: 'http://192.168.1.25:8000/form.html',
+
+NEW:
+formUrl: 'https://YOUR-USERNAME.github.io/FormQRApp/form.html',
+
+Replace YOUR-USERNAME with your actual GitHub username.
+
+Then commit and push the change:
+
+git add script.js
+git commit -m "Update QR code URL for production"
+git push
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FINAL TEST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Visit: https://YOUR-USERNAME.github.io/FormQRApp/
+2. QR code should appear
+3. Scan with phone
+4. Submit form
+5. Check Google Sheets for data
+6. PDF should download
+
+✅ Your app is now live worldwide!
+
+═══════════════════════════════════════════════════════════════

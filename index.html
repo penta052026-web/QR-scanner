@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4A90E2">
+    <meta name="description" content="QR Form PWA - Scan to submit feedback">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="QR Form PWA">
+    
+    <title>QR Form PWA</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="penta logo.png">
+    <link rel="apple-touch-icon" href="penta logo.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Company Logo -->
+        <div class="logo-container">
+            <img src="penta logo.png" alt="Company Logo" class="logo">
+        </div>
+        
+        <!-- Tagline -->
+        <h1 class="tagline">Welcome to FormQRApp</h1>
+        <p class="subtitle">Scan the QR code below to get started</p>
+        
+        <!-- QR Code Container -->
+        <div class="qr-wrapper">
+            <div class="qr-container">
+                <div id="qrcode"></div>
+            </div>
+            <p class="scan-label">Scan Me</p>
+        </div>
+        
+        <!-- Instructions -->
+        <div class="instructions">
+            <p>👉 Use your phone's camera to scan the QR code</p>
+            <p>📝 Fill out the form to receive your document</p>
+        </div>
+        
+        <!-- Desktop Alternative -->
+        <div class="desktop-link">
+            <p>On desktop? Click below:</p>
+            <a href="form.html" class="btn-primary">Open Form</a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Penta. All rights reserved.</p>
+        <p class="install-prompt" id="installPrompt" style="display:none;">
+            <button id="installBtn" class="btn-install">📱 Install App</button>
+        </p>
+    </footer>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- QR Generation Script -->
+    <script src="script.js"></script>
+    
+    <!-- PWA Installation Script -->
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('✅ Service Worker registered'))
+                    .catch(err => console.log('❌ Service Worker registration failed:', err));
+            });
+        }
+        
+        // PWA Install Prompt
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installPrompt').style.display = 'block';
+        });
+        
+        document.getElementById('installBtn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response: ${outcome}`);
+                deferredPrompt = null;
+                document.getElementById('installPrompt').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

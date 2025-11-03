@@ -1,0 +1,17 @@
+# Ignore Google Apps Script file (already deployed to Google)
+google-apps-script.js
+
+# Ignore documentation files (optional)
+SETUP.txt
+*.md
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

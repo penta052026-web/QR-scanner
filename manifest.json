@@ -1,0 +1,40 @@
+{
+  "name": "FormQRApp - QR Form PWA",
+  "short_name": "FormQRApp",
+  "description": "Scan QR code to submit feedback and receive PDF documents",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#EBF5FF",
+  "theme_color": "#4A90E2",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "penta logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "penta logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Open Form",
+      "short_name": "Form",
+      "description": "Directly open the feedback form",
+      "url": "/form.html",
+      "icons": [
+        {
+          "src": "penta logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

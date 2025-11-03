@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4A90E2">
+    <meta name="description" content="Submit your details">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>Form - QR Form PWA</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="penta logo.png">
+    <link rel="apple-touch-icon" href="penta logo.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Company Logo -->
+        <div class="logo-container">
+            <img src="penta logo.png" alt="Company Logo" class="logo">
+        </div>
+        
+        <!-- Form Card -->
+        <div class="form-card">
+            <h2 class="form-title">📋 Submit Your Details</h2>
+            <p class="form-subtitle">Please fill out the form below to receive your PDF document</p>
+            
+            <!-- Success Message (Hidden by default) -->
+            <div id="successMessage" class="success-message" style="display:none;">
+                <div class="success-icon">✅</div>
+                <h3>Thank you!</h3>
+                <p>Your details have been submitted and the PDF is downloading.</p>
+            </div>
+            
+            <!-- Form -->
+            <form id="feedbackForm" class="form">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">
+                        <span class="label-text">Full Name</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form-input" 
+                        placeholder="Enter your full name"
+                        required
+                        autocomplete="name"
+                    >
+                    <span class="error-message" id="nameError"></span>
+                </div>
+
+                <!-- Company Field -->
+                <div class="form-group">
+                    <label for="company" class="form-label">
+                        <span class="label-text">Company Name</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="company" 
+                        name="company" 
+                        class="form-input" 
+                        placeholder="Enter your company name"
+                        required
+                        autocomplete="organization"
+                    >
+                    <span class="error-message" id="companyError"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        <span class="label-text">Email Address</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="your.email@example.com"
+                        required
+                        autocomplete="email"
+                    >
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <span class="btn-text">Submit & Download PDF</span>
+                    <span class="btn-loader" style="display:none;">
+                        <span class="spinner"></span>
+                        Processing...
+                    </span>
+                </button>
+            </form>
+            
+            <!-- Privacy Notice -->
+            <p class="privacy-notice">
+                🔒 Your information is secure and will only be used for document delivery.
+            </p>
+        </div>
+        
+        <!-- Back Link -->
+        <div class="back-link">
+            <a href="index.html">← Back to QR Code</a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Penta. All rights reserved.</p>
+    </footer>
+
+    <!-- Form Submission Script -->
+    <script src="form-script.js"></script>
+</body>
+</html>
