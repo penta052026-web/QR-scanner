@@ -140,7 +140,7 @@ function downloadPDFs() {
 
 function downloadSinglePDF(url, filename) {
     try {
-        // Create temporary anchor element
+        // Method 1: Try direct download
         const link = document.createElement('a');
         link.href = url;
         link.download = filename;
@@ -152,10 +152,48 @@ function downloadSinglePDF(url, filename) {
         document.body.removeChild(link);
         
         console.log(`✅ PDF download triggered: ${filename}`);
+        
+        // Method 2: Also open in new tab as backup
+        setTimeout(() => {
+            window.open(url, '_blank');
+        }, 500);
+        
+        return true;
     } catch (error) {
         console.error(`❌ PDF download error for ${filename}:`, error);
-        // Open in new tab as fallback
+        // Fallback: open in new tab
         window.open(url, '_blank');
+        return false;
+    }
+}
+
+// ============================================
+// Download Status and Manual Download Helpers
+// ============================================
+function updateDownloadStatus(message) {
+    const statusElement = document.getElementById('downloadStatus');
+    if (statusElement) {
+        statusElement.querySelector('p').textContent = message;
+    }
+}
+
+function showManualDownloadOptions(successfulDownloads) {
+    const manualDownloads = document.getElementById('manualDownloads');
+    const downloadStatus = document.getElementById('downloadStatus');
+    
+    if (successfulDownloads === FORM_CONFIG.pdfUrls.length) {
+        updateDownloadStatus('✅ PDFs downloaded successfully!');
+        // Still show manual options in case user needs them
+        setTimeout(() => {
+            if (manualDownloads) {
+                manualDownloads.style.display = 'block';
+            }
+        }, 2000);
+    } else {
+        updateDownloadStatus('⚠️ Some downloads may have failed. Use the buttons below:');
+        if (manualDownloads) {
+            manualDownloads.style.display = 'block';
+        }
     }
 }
 
