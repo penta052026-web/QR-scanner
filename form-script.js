@@ -140,49 +140,26 @@ function downloadPDFs() {
 
 function downloadSinglePDF(url, filename) {
     try {
-        console.log(`📥 Attempting download: ${filename}`);
+        console.log(`📥 Downloading: ${filename}`);
         
-        // Method 1: Create invisible iframe for download
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = url;
-        document.body.appendChild(iframe);
+        // Single method: Direct anchor download
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        link.target = '_blank';
+        link.style.display = 'none';
         
-        // Remove iframe after 3 seconds
-        setTimeout(() => {
-            if (iframe.parentNode) {
-                document.body.removeChild(iframe);
-            }
-        }, 3000);
+        // Add to DOM, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         
-        // Method 2: Traditional anchor download
-        setTimeout(() => {
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            link.target = '_blank';
-            link.style.display = 'none';
-            
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            console.log(`✅ Anchor download triggered: ${filename}`);
-        }, 500);
-        
-        // Method 3: Force open in new window as final fallback
-        setTimeout(() => {
-            const newWindow = window.open(url, '_blank');
-            if (!newWindow) {
-                console.warn(`⚠️ Popup blocked for ${filename}`);
-            }
-            console.log(`🔗 Backup window opened: ${filename}`);
-        }, 1000);
-        
+        console.log(`✅ Download initiated: ${filename}`);
         return true;
+        
     } catch (error) {
-        console.error(`❌ PDF download error for ${filename}:`, error);
-        // Final fallback: direct window.open
+        console.error(`❌ Download failed for ${filename}:`, error);
+        // Only fallback if the main method fails
         window.open(url, '_blank');
         return false;
     }
