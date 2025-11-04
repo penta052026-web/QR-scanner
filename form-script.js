@@ -351,11 +351,8 @@ function showSuccessMessage() {
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
-        // Hide success message after duration and show form again
-        setTimeout(() => {
-            successMessage.style.display = 'none';
-            form.style.display = 'block';
-        }, FORM_CONFIG.successDuration + 2000);
+        // Don't auto-hide - let user stay on thank you page
+        // They can use the "Back to QR Code" link if needed
     }
 }
 
