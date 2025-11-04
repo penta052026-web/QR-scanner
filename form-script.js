@@ -146,32 +146,55 @@ function downloadPDFs() {
 
 function downloadSinglePDF(url, filename) {
     try {
-        console.log(`📥 Opening download: ${filename}`);
+        console.log(`📥 Initiating download: ${filename}`);
         
-        // Use window.open for better cross-browser and mobile support
-        // This works better with Google Drive links on all devices
-        const downloadWindow = window.open(url, '_blank');
+        // Check if mobile device
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
-        if (downloadWindow) {
-            console.log(`✅ Download window opened: ${filename}`);
+        if (isMobile) {
+            // For mobile: Create a temporary anchor and click it
+            console.log('Mobile device detected - using anchor method');
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.target = '_blank';
+            link.style.display = 'none';
             
-            // For mobile devices, focus the new window
-            if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                downloadWindow.focus();
-            }
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
             
+            // Also try window.open as backup for mobile
+            setTimeout(() => {
+                window.open(url, '_blank');
+            }, 500);
+            
+            console.log(`✅ Mobile download initiated: ${filename}`);
             return true;
         } else {
-            console.warn(`⚠️ Popup blocked for: ${filename}`);
-            // Try alternative method if popup is blocked
-            location.href = url;
-            return false;
+            // For desktop: Use window.open
+            console.log('Desktop device detected - using window.open');
+            const downloadWindow = window.open(url, '_blank');
+            
+            if (downloadWindow) {
+                console.log(`✅ Desktop download window opened: ${filename}`);
+                return true;
+            } else {
+                console.warn(`⚠️ Popup blocked for: ${filename}`);
+                // Fallback: try anchor method
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.target = '_blank';
+                link.click();
+                return false;
+            }
         }
         
     } catch (error) {
         console.error(`❌ Download failed for ${filename}:`, error);
         // Final fallback: direct navigation
-        location.href = url;
+        window.location.href = url;
         return false;
     }
 }
