@@ -100,6 +100,38 @@
                 </button>
             </form>
             
+            <!-- Success Message (Hidden by default) -->
+            <div id="successMessage" class="success-message" style="display:none;">
+                <div class="success-icon">✅</div>
+                <h3>Thank you!</h3>
+                <p>Your details have been submitted successfully!</p>
+                
+                <!-- PDF Download Status -->
+                <div id="downloadStatus" class="download-status">
+                    <p>📥 Downloading PDFs automatically...</p>
+                </div>
+                
+                <!-- Manual Download Buttons -->
+                <div id="manualDownloads" class="manual-downloads" style="display:none;">
+                    <p><strong>Download your PDFs:</strong></p>
+                    <div class="download-buttons">
+                        <a href="https://drive.google.com/uc?export=download&id=1uWRiR1mT50MBFL3-u9PsHMbh7YpnKuFk" 
+                           target="_blank" 
+                           class="btn-download" 
+                           download="PENTA-LaboCatalogue.pdf">
+                            📄 Download PENTA Lab Catalogue
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=13kpFhw8HOVzAv5DdWHqOMQVeaiJLdv1C" 
+                           target="_blank" 
+                           class="btn-download" 
+                           download="EDUC-CAT.pdf">
+                            📄 Download Education Catalogue
+                        </a>
+                    </div>
+                    <p class="download-note">💡 If downloads don't start automatically, click the buttons above</p>
+                </div>
+            </div>
+            
             <!-- Privacy Notice -->
             <p class="privacy-notice">
                 🔒 Your information is secure and will only be used for document delivery.
