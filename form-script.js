@@ -10,11 +10,11 @@ const FORM_CONFIG = {
     // PDF Download URLs
     pdfUrls: [
         {
-            url: 'https://drive.google.com/uc?export=download&id=1uWRiR1mT50MBFL3-u9PsHMbh7YpnKuFk',
+            url: 'https://drive.google.com/uc?export=download&id=13kpFhw8HOVzAv5DdWHqOMQVeaiJLdv1C',
             filename: 'PENTA-LaboCatalogue.pdf'
         },
         {
-            url: 'https://drive.google.com/uc?export=download&id=13kpFhw8HOVzAv5DdWHqOMQVeaiJLdv1C',
+            url: 'https://drive.google.com/uc?export=download&id=1_zutQh_MSIdv7N5k7n1Suw4HhRXpgyvr',
             filename: 'EDUC-CAT.pdf'
         }
     ],
@@ -351,20 +351,13 @@ function showSuccessMessage() {
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
-        // Always show manual download buttons after 5 seconds as backup
+        // Update download status after a short delay
         setTimeout(() => {
-            const manualDownloads = document.getElementById('manualDownloads');
-            if (manualDownloads) {
-                manualDownloads.style.display = 'block';
-                updateDownloadStatus('✅ PDFs should be downloading. Use buttons below if needed:');
-            }
-        }, 5000);
+            updateDownloadStatus('✅ PDFs should be downloading. Use buttons below if needed:');
+        }, 3000);
         
-        // Hide success message after duration and show form again
-        setTimeout(() => {
-            successMessage.style.display = 'none';
-            form.style.display = 'block';
-        }, FORM_CONFIG.successDuration + 15000); // Extended time to allow downloads
+        // Don't auto-hide - let user stay on thank you page
+        // They can use the "Back to QR Code" link if needed
     }
 }
 
