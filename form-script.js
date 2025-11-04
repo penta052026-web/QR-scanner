@@ -140,27 +140,32 @@ function downloadPDFs() {
 
 function downloadSinglePDF(url, filename) {
     try {
-        console.log(`📥 Downloading: ${filename}`);
+        console.log(`📥 Opening download: ${filename}`);
         
-        // Single method: Direct anchor download
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        link.target = '_blank';
-        link.style.display = 'none';
+        // Use window.open for better cross-browser and mobile support
+        // This works better with Google Drive links on all devices
+        const downloadWindow = window.open(url, '_blank');
         
-        // Add to DOM, click, and remove
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        console.log(`✅ Download initiated: ${filename}`);
-        return true;
+        if (downloadWindow) {
+            console.log(`✅ Download window opened: ${filename}`);
+            
+            // For mobile devices, focus the new window
+            if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                downloadWindow.focus();
+            }
+            
+            return true;
+        } else {
+            console.warn(`⚠️ Popup blocked for: ${filename}`);
+            // Try alternative method if popup is blocked
+            location.href = url;
+            return false;
+        }
         
     } catch (error) {
         console.error(`❌ Download failed for ${filename}:`, error);
-        // Only fallback if the main method fails
-        window.open(url, '_blank');
+        // Final fallback: direct navigation
+        location.href = url;
         return false;
     }
 }
