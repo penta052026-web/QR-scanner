@@ -351,8 +351,20 @@ function showSuccessMessage() {
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
-        // Don't auto-hide - let user stay on thank you page
-        // They can use the "Back to QR Code" link if needed
+        // Always show manual download buttons after 5 seconds as backup
+        setTimeout(() => {
+            const manualDownloads = document.getElementById('manualDownloads');
+            if (manualDownloads) {
+                manualDownloads.style.display = 'block';
+                updateDownloadStatus('✅ PDFs should be downloading. Use buttons below if needed:');
+            }
+        }, 5000);
+        
+        // Hide success message after duration and show form again
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+            form.style.display = 'block';
+        }, FORM_CONFIG.successDuration + 15000); // Extended time to allow downloads
     }
 }
 
