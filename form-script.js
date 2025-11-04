@@ -140,28 +140,49 @@ function downloadPDFs() {
 
 function downloadSinglePDF(url, filename) {
     try {
-        // Method 1: Try direct download
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        link.target = '_blank';
+        console.log(`📥 Attempting download: ${filename}`);
         
-        // Trigger download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // Method 1: Create invisible iframe for download
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = url;
+        document.body.appendChild(iframe);
         
-        console.log(`✅ PDF download triggered: ${filename}`);
-        
-        // Method 2: Also open in new tab as backup
+        // Remove iframe after 3 seconds
         setTimeout(() => {
-            window.open(url, '_blank');
+            if (iframe.parentNode) {
+                document.body.removeChild(iframe);
+            }
+        }, 3000);
+        
+        // Method 2: Traditional anchor download
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.target = '_blank';
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            console.log(`✅ Anchor download triggered: ${filename}`);
         }, 500);
+        
+        // Method 3: Force open in new window as final fallback
+        setTimeout(() => {
+            const newWindow = window.open(url, '_blank');
+            if (!newWindow) {
+                console.warn(`⚠️ Popup blocked for ${filename}`);
+            }
+            console.log(`🔗 Backup window opened: ${filename}`);
+        }, 1000);
         
         return true;
     } catch (error) {
         console.error(`❌ PDF download error for ${filename}:`, error);
-        // Fallback: open in new tab
+        // Final fallback: direct window.open
         window.open(url, '_blank');
         return false;
     }
