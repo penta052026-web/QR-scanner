@@ -120,21 +120,27 @@ async function submitToGoogleSheets(formData) {
 // Download PDFs
 // ============================================
 function downloadPDFs() {
+    console.log('📥 Starting immediate PDF downloads...');
+    
+    // Show download status
+    updateDownloadStatus('📥 Downloading both PDFs now...');
+    
     try {
+        // Download all PDFs immediately without delay
         FORM_CONFIG.pdfUrls.forEach((pdf, index) => {
-            // Add a small delay between downloads to prevent browser blocking
-            setTimeout(() => {
-                downloadSinglePDF(pdf.url, pdf.filename);
-            }, index * 500); // 500ms delay between each download
+            console.log(`🚀 Downloading ${index + 1}/${FORM_CONFIG.pdfUrls.length}: ${pdf.filename}`);
+            downloadSinglePDF(pdf.url, pdf.filename);
         });
         
-        console.log(`✅ ${FORM_CONFIG.pdfUrls.length} PDF downloads triggered`);
+        // Update status after all downloads initiated
+        setTimeout(() => {
+            updateDownloadStatus('✅ Both PDFs are downloading! Check your downloads folder or browser tabs.');
+        }, 1000);
+        
+        console.log(`✅ ${FORM_CONFIG.pdfUrls.length} PDF downloads initiated simultaneously`);
     } catch (error) {
         console.error('❌ PDF downloads error:', error);
-        // Fallback: open all PDFs in new tabs
-        FORM_CONFIG.pdfUrls.forEach(pdf => {
-            window.open(pdf.url, '_blank');
-        });
+        updateDownloadStatus('⚠️ Download failed. Please use manual download buttons below.');
     }
 }
 
