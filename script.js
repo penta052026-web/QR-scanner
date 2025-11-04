@@ -4,11 +4,10 @@
 
 // Configuration
 const QR_CONFIG = {
-    // Local network URL for mobile testing
-    // Make sure your phone is on the same WiFi network
-    formUrl: 'http://192.168.1.25:8000/form.html',
-    // After deploying to GitHub Pages, update with:
-    // formUrl: 'https://YOUR-USERNAME.github.io/FormQRApp/form.html',
+    // GitHub Pages URL - UPDATED for production
+    formUrl: 'https://penta052026-web.github.io/QR-scanner/form.html',
+    // Local testing URL (uncomment for local development):
+    // formUrl: 'http://192.168.1.25:8000/form.html',
     qrCodeSize: 280,
     qrCodeColorDark: '#1F2937',
     qrCodeColorLight: '#FFFFFF',
