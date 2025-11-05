@@ -5,7 +5,7 @@
 // Configuration
 const FORM_CONFIG = {
     // Google Apps Script Web App URL - UPDATED
-    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbx7FzBhA5DtqOS-kWbrjgXjEOBR-rVh4v4J5Dd7oM3BHovm4ZvMLRB61nmuYHm-7fTYsw/exec',
+    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyYtUKP03VG-I4o11IdcPSq_Xkq0JIAx8vsxwIYo5dR5BF4hQrVI_AEldc04ABZILjfmw/exec',
     
     // PDF Download URLs
     pdfUrls: [
