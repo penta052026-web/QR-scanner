@@ -16,6 +16,10 @@ const FORM_CONFIG = {
         {
             url: 'https://drive.google.com/uc?export=download&id=1_zutQh_MSIdv7N5k7n1Suw4HhRXpgyvr',
             filename: 'EDUC-CAT.pdf'
+        },
+        {
+            url: 'https://drive.google.com/uc?export=download&id=1hpguDRpuJq7f7xHt12WoPfy6ZzB8v_nk',
+            filename: 'Third-Document.pdf'
         }
     ],
     
@@ -123,7 +127,7 @@ function downloadPDFs() {
     console.log('📥 Starting immediate PDF downloads...');
     
     // Show download status
-    updateDownloadStatus('📥 Downloading both PDFs now...');
+    updateDownloadStatus('📥 Downloading all 3 PDFs now...');
     
     try {
         // Download all PDFs immediately without delay
@@ -134,7 +138,7 @@ function downloadPDFs() {
         
         // Update status after all downloads initiated
         setTimeout(() => {
-            updateDownloadStatus('✅ Both PDFs are downloading! Check your downloads folder or browser tabs.');
+            updateDownloadStatus('✅ All 3 PDFs are downloading! Check your downloads folder or browser tabs.');
         }, 1000);
         
         console.log(`✅ ${FORM_CONFIG.pdfUrls.length} PDF downloads initiated simultaneously`);
@@ -385,7 +389,7 @@ function showSuccessMessage() {
         
         // Update download status after a short delay
         setTimeout(() => {
-            updateDownloadStatus('✅ PDFs should be downloading. Use buttons below if needed:');
+            updateDownloadStatus('✅ All 3 PDFs should be downloading. Use buttons below if needed:');
         }, 3000);
         
         // Don't auto-hide - let user stay on thank you page
