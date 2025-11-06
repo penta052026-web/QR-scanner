@@ -377,7 +377,7 @@ function showSuccessMessage() {
         
         // Update download status after a short delay
         setTimeout(() => {
-            updateDownloadStatus('✅ All 3 PDFs should be downloading. Use buttons below if needed:');
+            updateDownloadStatus('✅ The catalogue pdf have been sent to your mail');
         }, 3000);
         
         // Don't auto-hide - let user stay on thank you page

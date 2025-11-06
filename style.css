@@ -66,10 +66,6 @@ body {
     transition: transform 0.4s ease;
 }
 
-.logo:hover {
-    transform: scale(1.08) rotate(2deg);
-}
-
 @keyframes fadeInDown {
     from {
         opacity: 0;
