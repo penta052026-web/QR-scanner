@@ -6,23 +6,10 @@
 const FORM_CONFIG = {
     // Google Apps Script Web App URL - UPDATED
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyYtUKP03VG-I4o11IdcPSq_Xkq0JIAx8vsxwIYo5dR5BF4hQrVI_AEldc04ABZILjfmw/exec',
-    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbynpjVBar_zlKCF_SWhzIrSiCdqdtKeQB4gb05GPnBO61xZLBjiO3UGNqSc39U9vNSR1A/exec',
+    //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbynpjVBar_zlKCF_SWhzIrSiCdqdtKeQB4gb05GPnBO61xZLBjiO3UGNqSc39U9vNSR1A/exec',
+    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyWFoi5EZPzEzn1KKrVOu5oeFet8np6u4OYvDyOO3ArQNQp750OYsOn_LZpH0FfNLpi4g/exec',
 
-    // PDF Download URLs
-    pdfUrls: [
-        {
-            url: 'https://drive.google.com/uc?export=download&id=13kpFhw8HOVzAv5DdWHqOMQVeaiJLdv1C',
-            filename: 'PENTA-LaboCatalogue.pdf'
-        },
-        {
-            url: 'https://drive.google.com/uc?export=download&id=1_zutQh_MSIdv7N5k7n1Suw4HhRXpgyvr',
-            filename: 'EDUC-CAT.pdf'
-        },
-        {
-            url: 'https://drive.google.com/uc?export=download&id=1hpguDRpuJq7f7xHt12WoPfy6ZzB8v_nk',
-            filename: 'Third-Document.pdf'
-        }
-    ],
+    // Email notification enabled - PDFs sent via email
     
     // Success message display duration
     successDuration: 3000
@@ -64,8 +51,8 @@ async function handleFormSubmit(e) {
     setLoadingState(true);
     
     try {
-        // Step 1: Submit to Google Sheets
-        console.log('📊 Submitting to Google Sheets...');
+        // Step 1: Submit to Google Sheets (which will also send email with PDFs)
+        console.log('📊 Submitting to Google Sheets and sending email...');
         await submitToGoogleSheets(formData);
         console.log('✅ Data saved to Google Sheets');
         
