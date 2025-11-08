@@ -8,8 +8,9 @@ const FORM_CONFIG = {
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyYtUKP03VG-I4o11IdcPSq_Xkq0JIAx8vsxwIYo5dR5BF4hQrVI_AEldc04ABZILjfmw/exec',
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbynpjVBar_zlKCF_SWhzIrSiCdqdtKeQB4gb05GPnBO61xZLBjiO3UGNqSc39U9vNSR1A/exec',
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyWFoi5EZPzEzn1KKrVOu5oeFet8np6u4OYvDyOO3ArQNQp750OYsOn_LZpH0FfNLpi4g/exec',
-    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbxuQfsiibvAGJnxoYlTEUCsVtF56Q5zrJuIlB3op69yLGD4R7YRg_96CKedYdZwz18Jeg/exec',
-    
+    //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbxuQfsiibvAGJnxoYlTEUCsVtF56Q5zrJuIlB3op69yLGD4R7YRg_96CKedYdZwz18Jeg/exec',
+    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbzB_hAYUedn1cE3av6Xh8O2pbOeJkmB68MbE1yLvvZCygEwFUsGsBHk9ehu_4HnPqZFHQ/exec',
+
     // PDF URLs for automatic downloads
     pdfUrls: [
         {
@@ -18,10 +19,10 @@ const FORM_CONFIG = {
         },
         {
             url: 'https://drive.google.com/uc?export=download&id=1_zutQh_MSIdv7N5k7n1Suw4HhRXpgyvr',
-            filename: 'Penta-Labo Catalogue.pdf'
+            filename: 'Penta-Lab Catalogue.pdf'
         },
         {
-            url: 'https://drive.google.com/uc?export=download&id=1B-ADJ0Sq5u0uYiBEosDJUDCE9IFmfuS8',
+            url: 'https://drive.google.com/uc?export=download&id=15v3vsZRCuqCk2Qd7_l06ZWlcivjFOCVl',
             filename: 'Penta-Educational Lab Catalogue.pdf'
         }
     ],
