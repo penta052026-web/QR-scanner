@@ -9,6 +9,22 @@ const FORM_CONFIG = {
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbynpjVBar_zlKCF_SWhzIrSiCdqdtKeQB4gb05GPnBO61xZLBjiO3UGNqSc39U9vNSR1A/exec',
     googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyWFoi5EZPzEzn1KKrVOu5oeFet8np6u4OYvDyOO3ArQNQp750OYsOn_LZpH0FfNLpi4g/exec',
 
+    // PDF URLs for automatic downloads
+    pdfUrls: [
+        {
+            url: 'https://drive.google.com/uc?export=download&id=1hpguDRpuJq7f7xHt12WoPfy6ZzB8v_nk',
+            filename: 'Penta Profile 2025.pdf'
+        },
+        {
+            url: 'https://drive.google.com/uc?export=download&id=1_zutQh_MSIdv7N5k7n1Suw4HhRXpgyvr',
+            filename: 'PENTA-LaboCatalogue.pdf'
+        },
+        {
+            url: 'https://drive.google.com/uc?export=download&id=1B-ADJ0Sq5u0uYiBEosDJUDCE9IFmfuS8',
+            filename: 'PENTA-Educational-Lab-Catalogue.pdf'
+        }
+    ],
+
     // Email notification enabled - PDFs sent via email
     
     // Success message display duration
