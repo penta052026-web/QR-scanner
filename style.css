@@ -502,10 +502,11 @@ body {
     gap: 12px;
     margin: 15px 0;
     align-items: center;
+    width: 100%;
 }
 
 .btn-download {
-    display: inline-block;
+    display: block;
     background: linear-gradient(135deg, #10B981 0%, #059669 100%);
     color: white;
     padding: 12px 20px;
@@ -515,6 +516,9 @@ body {
     text-align: center;
     transition: var(--transition);
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
 }
 
 .btn-download:hover {
@@ -535,19 +539,14 @@ body {
 
 @media (min-width: 768px) {
     .download-buttons {
-        flex-direction: row;
-        justify-content: center;
-        align-items: stretch;
-        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
     }
     
     .btn-download {
-        flex: 0 1 auto;
-        min-width: 200px;
-        max-width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        width: 100%;
+        max-width: 300px;
     }
 }
 

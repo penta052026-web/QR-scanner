@@ -8,7 +8,7 @@ const FORM_CONFIG = {
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyYtUKP03VG-I4o11IdcPSq_Xkq0JIAx8vsxwIYo5dR5BF4hQrVI_AEldc04ABZILjfmw/exec',
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbynpjVBar_zlKCF_SWhzIrSiCdqdtKeQB4gb05GPnBO61xZLBjiO3UGNqSc39U9vNSR1A/exec',
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyWFoi5EZPzEzn1KKrVOu5oeFet8np6u4OYvDyOO3ArQNQp750OYsOn_LZpH0FfNLpi4g/exec',
-    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbw8BQobbhzm0S8UUBheBCsYbAQGtODUOMrrnsAGiTT4kGbh-gOYYdZBYe9jmqgsvnEt3g/exec',
+    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbxuQfsiibvAGJnxoYlTEUCsVtF56Q5zrJuIlB3op69yLGD4R7YRg_96CKedYdZwz18Jeg/exec',
     
     // PDF URLs for automatic downloads
     pdfUrls: [
