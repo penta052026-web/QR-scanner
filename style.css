@@ -501,6 +501,7 @@ body {
     flex-direction: column;
     gap: 12px;
     margin: 15px 0;
+    align-items: center;
 }
 
 .btn-download {
@@ -536,11 +537,17 @@ body {
     .download-buttons {
         flex-direction: row;
         justify-content: center;
+        align-items: stretch;
+        gap: 15px;
     }
     
     .btn-download {
-        flex: 1;
+        flex: 0 1 auto;
+        min-width: 200px;
         max-width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
