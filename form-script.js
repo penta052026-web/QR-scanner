@@ -68,17 +68,12 @@ async function handleFormSubmit(e) {
     setLoadingState(true);
     
     try {
-        // Step 1: Submit to Google Sheets (which will also send email with PDFs)
+        // Submit to Google Sheets (which will also send email with PDFs)
         console.log('📊 Submitting to Google Sheets and sending email...');
         await submitToGoogleSheets(formData);
         console.log('✅ Data saved to Google Sheets');
         
-        // Step 2: Download PDFs
-        console.log('📥 Initiating PDF downloads...');
-        downloadPDFs();
-        console.log('✅ PDF downloads started');
-        
-        // Step 3: Show success message
+        // Show success message
         showSuccessMessage();
         
         // Reset form after delay
@@ -125,118 +120,7 @@ async function submitToGoogleSheets(formData) {
     }
 }
 
-// ============================================
-// Download PDFs
-// ============================================
-function downloadPDFs() {
-    console.log('📥 Starting immediate PDF downloads...');
-    
-    // Show download status
-    updateDownloadStatus('📥 Downloading all 3 PDFs now...');
-    
-    try {
-        // Download all PDFs immediately without delay
-        FORM_CONFIG.pdfUrls.forEach((pdf, index) => {
-            console.log(`🚀 Downloading ${index + 1}/${FORM_CONFIG.pdfUrls.length}: ${pdf.filename}`);
-            downloadSinglePDF(pdf.url, pdf.filename);
-        });
-        
-        // Update status after all downloads initiated
-        setTimeout(() => {
-            updateDownloadStatus('✅ All 3 PDFs are downloading! Check your downloads folder or browser tabs.');
-        }, 1000);
-        
-        console.log(`✅ ${FORM_CONFIG.pdfUrls.length} PDF downloads initiated simultaneously`);
-    } catch (error) {
-        console.error('❌ PDF downloads error:', error);
-        updateDownloadStatus('⚠️ Download failed. Please use manual download buttons below.');
-    }
-}
 
-function downloadSinglePDF(url, filename) {
-    try {
-        console.log(`📥 Initiating download: ${filename}`);
-        
-        // Check if mobile device
-        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-            // For mobile: Create a temporary anchor and click it
-            console.log('Mobile device detected - using anchor method');
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            link.target = '_blank';
-            link.style.display = 'none';
-            
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Also try window.open as backup for mobile
-            setTimeout(() => {
-                window.open(url, '_blank');
-            }, 500);
-            
-            console.log(`✅ Mobile download initiated: ${filename}`);
-            return true;
-        } else {
-            // For desktop: Use window.open
-            console.log('Desktop device detected - using window.open');
-            const downloadWindow = window.open(url, '_blank');
-            
-            if (downloadWindow) {
-                console.log(`✅ Desktop download window opened: ${filename}`);
-                return true;
-            } else {
-                console.warn(`⚠️ Popup blocked for: ${filename}`);
-                // Fallback: try anchor method
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = filename;
-                link.target = '_blank';
-                link.click();
-                return false;
-            }
-        }
-        
-    } catch (error) {
-        console.error(`❌ Download failed for ${filename}:`, error);
-        // Final fallback: direct navigation
-        window.location.href = url;
-        return false;
-    }
-}
-
-// ============================================
-// Download Status and Manual Download Helpers
-// ============================================
-function updateDownloadStatus(message) {
-    const statusElement = document.getElementById('downloadStatus');
-    if (statusElement) {
-        statusElement.querySelector('p').textContent = message;
-    }
-}
-
-function showManualDownloadOptions(successfulDownloads) {
-    const manualDownloads = document.getElementById('manualDownloads');
-    const downloadStatus = document.getElementById('downloadStatus');
-    
-    if (successfulDownloads === FORM_CONFIG.pdfUrls.length) {
-        updateDownloadStatus('✅ PDFs downloaded successfully!');
-        // Still show manual options in case user needs them
-        setTimeout(() => {
-            if (manualDownloads) {
-                manualDownloads.style.display = 'block';
-            }
-        }, 2000);
-    } else {
-        updateDownloadStatus('⚠️ Some downloads may have failed. Use the buttons below:');
-        if (manualDownloads) {
-            manualDownloads.style.display = 'block';
-        }
-    }
-}
 
 // ============================================
 // Form Validation
