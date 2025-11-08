@@ -7,8 +7,9 @@ const FORM_CONFIG = {
     // Google Apps Script Web App URL - UPDATED
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyYtUKP03VG-I4o11IdcPSq_Xkq0JIAx8vsxwIYo5dR5BF4hQrVI_AEldc04ABZILjfmw/exec',
     //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbynpjVBar_zlKCF_SWhzIrSiCdqdtKeQB4gb05GPnBO61xZLBjiO3UGNqSc39U9vNSR1A/exec',
-    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyWFoi5EZPzEzn1KKrVOu5oeFet8np6u4OYvDyOO3ArQNQp750OYsOn_LZpH0FfNLpi4g/exec',
-
+    //googleScriptUrl: 'https://script.google.com/macros/s/AKfycbyWFoi5EZPzEzn1KKrVOu5oeFet8np6u4OYvDyOO3ArQNQp750OYsOn_LZpH0FfNLpi4g/exec',
+    googleScriptUrl: 'https://script.google.com/macros/s/AKfycbw8BQobbhzm0S8UUBheBCsYbAQGtODUOMrrnsAGiTT4kGbh-gOYYdZBYe9jmqgsvnEt3g/exec',
+    
     // PDF URLs for automatic downloads
     pdfUrls: [
         {
@@ -17,11 +18,11 @@ const FORM_CONFIG = {
         },
         {
             url: 'https://drive.google.com/uc?export=download&id=1_zutQh_MSIdv7N5k7n1Suw4HhRXpgyvr',
-            filename: 'PENTA-LaboCatalogue.pdf'
+            filename: 'Penta-Labo Catalogue.pdf'
         },
         {
             url: 'https://drive.google.com/uc?export=download&id=1B-ADJ0Sq5u0uYiBEosDJUDCE9IFmfuS8',
-            filename: 'PENTA-Educational-Lab-Catalogue.pdf'
+            filename: 'Penta-Educational Lab Catalogue.pdf'
         }
     ],
 
